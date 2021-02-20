@@ -4,40 +4,35 @@ import Login from './login.js';
 class Home extends Component {
     state = {  
         btnName: null,
-        loginClassName: "login close"
+       
     }
 
     handleOnClickWarehouse = () => {
-        this.setState({btnName: "warehouse"});
-        this.setState({loginClassName: "login"});
-        
+        this.setState({btnName: "warehouse"});        
     };
 
     handleOnClickSales = () => {
         this.setState({btnName: "sales"});
-        this.setState({loginClassName: "login"});
     }
 
     handleCloseBtn = () => {
-        this.setState({loginClassName: "login close"});
+        this.setState({btnName: null});
     }
 
-    
-
-    render() { 
-        console.log("home");
+    render() {
+      
         return (
             <>
             <div className="btn-containers">
                  <button className="btn-warehouse" onClick={this.handleOnClickWarehouse}>Warehouse</button>
                  <button className="btn-sales" onClick={this.handleOnClickSales}>Sales</button>
             </div>
-            <Login 
-            btnName={this.state.btnName}
-            loginClassName={this.state.loginClassName}
+            {this.state.btnName !== null ? 
+            (<Login btnName={this.state.btnName}
             handleCloseBtn={this.handleCloseBtn}
             handlingLogin={this.props.handlingLogin}
-            />
+            handlingDepartment={this.props.handlingDepartment}    
+            />) : null}
             </>
           );
     }

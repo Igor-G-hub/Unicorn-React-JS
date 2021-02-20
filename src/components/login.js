@@ -13,9 +13,10 @@ class Login extends Component {
             password: "",
             department: ""
         },
-
-        successfullyLogin: false,
-
+        successfullyLogin: {
+            condition: false,
+            conditionId: 0              
+            }    
     }
 
     handleInputName = (nameValue) => {
@@ -49,26 +50,44 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();        
         if ((this.state.errorMessageName.length == 0) && (this.state.errorMessagePass.length == 0)) {
-        } 
+        };
 
-        for (let i = 0; i < Credentials.length; i++) {
+        let found = false;
+        for (let i = 0; i < Credentials.length; i++) {                      
              if ((this.state.credentials.username == Credentials[i].username) &&
                  (this.state.credentials.password == Credentials[i].password) &&
-                 (this.state.credentials.department == Credentials[i].department)) {                        
-                  this.setState({successfullyLogin: true});
-                  break;  
-                 } else {
-                    this.setState({successfullyLogin: false});
-                    this.setState({errorTryLogin: "Incorrect username or password. Please try again"});
-                 }                 
-            }
-        this.props.handlingLogin(this.state.successfullyLogin);            
+                 (this.state.credentials.department == Credentials[i].department)) { 
+
+                  this.setState(prevState => ({
+                      successfullyLogin: {...prevState.successfullyLogin, condition: true, conditionId: 1}
+                  }));
+
+                  found = true;
+                  break;                    
+                }                     
+        } 
+
+        if(!found) {
+            this.setState(prevState => ({
+                successfullyLogin: {...prevState.successfullyLogin, condition: false, conditionId: 2}
+            }));
+            this.setState({errorTryLogin: "Please enter correct username and password"});
+        } 
+        console.log('login:', this.state.successfullyLogin.condition);
+        this.props.handlingLogin(this.state.successfullyLogin.condition);
     }
-   
+
+    // componentDidUpdate(prevProps, prevState) { 
+    //     // if (nextState.successfullyLogin.condition !== this.state.successfullyLogin.condition) {
+    //     //     this.props.handlingLogin(this.state.successfullyLogin.condition); }
+    //     console.log('u didUpdate', this.state.successfullyLogin.condition);
+    //     console.log('this.state', this.state.successfullyLogin.condition);  
+     
+    // }
+
     render() {
-        console.log("login");
             return (
-            <div className={this.props.loginClassName}>
+            <div className="login">
                 <img src={close} alt="close button" onClick={() => this.props.handleCloseBtn()}/>
                 <h3>Login for {this.props.btnName}!</h3>
                 <h4>Please enter username and password:</h4> 
