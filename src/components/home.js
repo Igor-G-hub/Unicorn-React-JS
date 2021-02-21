@@ -3,35 +3,27 @@ import Login from './login.js';
 
 class Home extends Component {
     state = {  
-        btnName: null,
-       
-    }
-
-    handleOnClickWarehouse = () => {
-        this.setState({btnName: "warehouse"});        
-    };
-
-    handleOnClickSales = () => {
-        this.setState({btnName: "sales"});
-    }
-
-    handleCloseBtn = () => {
-        this.setState({btnName: null});
+               
     }
 
     render() {
-      
+        
         return (
             <>
             <div className="btn-containers">
-                 <button className="btn-warehouse" onClick={this.handleOnClickWarehouse}>Warehouse</button>
-                 <button className="btn-sales" onClick={this.handleOnClickSales}>Sales</button>
+                 <button className="btn-warehouse" onClick={() => this.props.handleOnClickWarehouse()}>Warehouse</button>
+                 <button className="btn-sales" onClick={() => this.props.handleOnClickSales()}>Sales</button>
             </div>
-            {this.state.btnName !== null ? 
-            (<Login btnName={this.state.btnName}
-            handleCloseBtn={this.handleCloseBtn}
-            handlingLogin={this.props.handlingLogin}
-            handlingDepartment={this.props.handlingDepartment}    
+            {this.props.credentials.department !== null ? 
+            (<Login 
+            handleCloseBtn={this.props.handleCloseBtn}
+            handleSubmit={this.props.handleSubmit}
+            handleInputName={this.props.handleInputName}
+            handleInputPass={this.props.handleInputPass} 
+            credentials={this.props.credentials}
+            errorMessageName={this.props.errorMessageName}
+            errorMessagePass={this.props.errorMessagePass}
+            errorTryLogin={this.props.errorTryLogin}   
             />) : null}
             </>
           );

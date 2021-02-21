@@ -1,0 +1,123 @@
+[
+    {
+    "serialNumber": "1008",
+    "dateOfProd": "2019-02",
+    "brand": "Audi",
+    "automobile": ["Q4", "Q5", "Q7"],
+    "basePrice": "50",
+    "action": {
+            "startDate":"2020-02-01",
+            "expireDate":"2020-04-01",
+            "discountPercent": "10"
+            }
+    },
+    {
+        "serialNumber": "1006",
+        "dateOfProd": "2019-01",
+        "brand": "Citroen",
+        "automobile": ["C5"],
+        "basePrice": "30",
+        "action": {
+                "startDate":"2020-02-01",
+                "expireDate":"2020-04-01",
+                "discountPercent": "10"
+                }
+    },            
+    {
+        "serialNumber": "1006",
+        "dateOfProd": "2019-01",
+        "brand": "Citroen",
+        "automobile": ["C5"],
+        "basePrice": "30",
+        "action": {
+                "startDate":"2020-02-01",
+                "expireDate":"2020-04-01",
+                "discountPercent": "10"
+                }
+        }, 
+    {
+        "serialNumber": "1002",
+        "dateOfProd": "2020-02",
+        "brand": "Audi",
+        "automobile": ["Q3", "Q4"],
+        "basePrice": "60",
+        "action": {
+                "startDate":"2020-02-01",
+                "expireDate":"2020-04-01",
+                "discountPercent": "10"
+                }
+        },
+        {
+            "serialNumber": "1003",
+            "dateOfProd": "2019-02",
+            "brand": "Audi",
+            "automobile": ["Q4", "Q5", "Q7"],
+            "basePrice": "50",
+            "action": {
+                    "startDate":"2020-02-01",
+                    "expireDate":"2020-04-01",
+                    "discountPercent": "10"
+                    }
+        },
+
+        {
+            "serialNumber": "1004",
+            "dateOfProd": "2019-05",
+            "brand": "Audi",
+            "automobile": ["Q5"],
+            "basePrice": "40",
+            "action": {
+                    "startDate":"2020-02-01",
+                    "expireDate":"2020-04-01",
+                    "discountPercent": "10"
+                    }
+            },
+            {
+                "serialNumber": "1005",
+                "dateOfProd": "2019-01",
+                "brand": "BMW",
+                "automobile": ["Serie 3", "Serie 5"],
+                "basePrice": "78",
+                "action": {
+                        "startDate":"2020-02-01",
+                        "expireDate":"2020-04-01",
+                        "discountPercent": "10"
+                        }
+                },
+                {
+                    "serialNumber": "1006",
+                    "dateOfProd": "2019-01",
+                    "brand": "Citroen",
+                    "automobile": ["C3", "C4"],
+                    "basePrice": "30",
+                    "action": {
+                            "startDate":"2020-02-01",
+                            "expireDate":"2020-04-01",
+                            "discountPercent": "10"
+                            }
+                    },
+                    {
+                        "serialNumber": "1007",
+                        "dateOfProd": "2019-01",
+                        "brand": "Citroen",
+                        "automobile": ["C5"],
+                        "basePrice": "30",
+                        "action": {
+                                "startDate":"2020-02-01",
+                                "expireDate":"2020-04-01",
+                                "discountPercent": "10"
+                                }
+                        }      
+
+
+
+
+
+
+
+
+
+
+
+
+] 
