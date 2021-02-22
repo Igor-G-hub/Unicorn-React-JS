@@ -12,7 +12,7 @@
             }
     },
     {
-        "serialNumber": "1006",
+        "serialNumber": "1001",
         "dateOfProd": "2019-01",
         "brand": "Citroen",
         "automobile": ["C5"],
@@ -22,7 +22,7 @@
                 "expireDate":"2020-04-01",
                 "discountPercent": "10"
                 }
-    },            
+    },   
     {
         "serialNumber": "1006",
         "dateOfProd": "2019-01",
@@ -107,7 +107,8 @@
                                 "expireDate":"2020-04-01",
                                 "discountPercent": "10"
                                 }
-                        }      
+                        }       
+          
 
 
 

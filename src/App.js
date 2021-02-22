@@ -21,8 +21,10 @@ class App extends Component {
     credentials: {
             username: "", 
             password: "",
-            department: null
-            }
+            department: null,    
+            },
+    brandSelector: ""        
+
   }  
 
   handleInputName = (nameValue) => {
@@ -98,6 +100,10 @@ handleInputPass = (passValue) => {
     }))
   }
 
+  passingBrandSelector  = (value) => {
+    this.setState({brandSelector: value})
+  }
+
   render() { 
     
     let isLogin = this.state.successfullyLogin.condition;
@@ -120,7 +126,9 @@ handleInputPass = (passValue) => {
           />) : null} */}
 
           {/* {isLogin && department == "warehouse" ? <Warehouse /> {: null} */}
-          <Warehouse />
+          <Warehouse 
+          brandSelector={this.passingBrandSelector}
+          />
 
           {/* {isLogin && department == "sales" ? <Sales /> : null} */}
       
