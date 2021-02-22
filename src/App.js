@@ -22,9 +22,13 @@ class App extends Component {
             username: "", 
             password: "",
             department: null,    
-            },
-    brandSelector: ""        
-
+            }, 
+    selectorValues: {
+            dateYear: "",
+            dateMonth: "",
+             brand: "",
+             car: ""
+           }                 
   }  
 
   handleInputName = (nameValue) => {
@@ -100,9 +104,11 @@ handleInputPass = (passValue) => {
     }))
   }
 
-  passingBrandSelector  = (value) => {
-    this.setState({brandSelector: value})
-  }
+  passingBrandSelector = (brand) => {
+    this.setState(prevState => ({
+    selectorValues: {...prevState.selectorValues, brand: brand}
+    }))
+    }
 
   render() { 
     
@@ -128,6 +134,7 @@ handleInputPass = (passValue) => {
           {/* {isLogin && department == "warehouse" ? <Warehouse /> {: null} */}
           <Warehouse 
           brandSelector={this.passingBrandSelector}
+          selectorValues={this.state.selectorValues}
           />
 
           {/* {isLogin && department == "sales" ? <Sales /> : null} */}
