@@ -5,11 +5,18 @@ import SelectedItems from './selectedItems';
 
 class Warehouse extends Component {
         state = {
+
           activeForm:  {
                         serialNumber: true,
                         dateOfProd: true,
                         brandCarSElect: true,
-                        }    
+                        },
+          search: {
+                   serialNumber: "",
+                   dateOfProd: "",
+                   brand: "",
+                   car: ""
+                  }                  
         }  
 
     handleBrandSelectorOptions = () => {
@@ -99,6 +106,10 @@ class Warehouse extends Component {
           }))
     }  
 
+  handleSearchSerNumber = () => {
+    console.log();
+  }
+
    
     render() { 
         return (
@@ -112,7 +123,7 @@ class Warehouse extends Component {
         type="text" id="serial-number" placeholder="enter serial number..." 
         onChange={(e) => this.handleEnableingSerialNumber(e.target.value)}
         /> 
-        <button type="submit">Search item</button> 
+        <button type="submit" onClick={(e) => this.handleSearchSerNumber(e.target.value)}>Search item</button> 
         <button type="submit">Add item</button> 
         <button type="submit">Remove item</button><br></br> 
         <label htmlFor="">Date of production:</label><br></br>
@@ -177,9 +188,12 @@ class Warehouse extends Component {
         <button type="submit">Add item</button> 
         <button type="submit">Remove item</button>
      </form>
-     <SelectedItems />
+     {/* <SelectedItems /> */}
+  
   </div>
-            
+  
+
+
   </>
   );
   }
