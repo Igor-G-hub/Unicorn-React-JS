@@ -1,7 +1,7 @@
 [
     {
     "serialNumber": "1001",
-    "dateOfProd": "2019-01",
+    "dateOfProd": "2020-01",
     "brand": "Audi",
     "car": ["Q4", "Q5", "Q7"],
     "basePrice": "50",
@@ -13,7 +13,7 @@
     },
     {
         "serialNumber": "1002",
-        "dateOfProd": "2019-02",
+        "dateOfProd": "2020-02",
         "brand": "Citroen",
         "car": ["C5"],
         "basePrice": "30",
@@ -25,7 +25,7 @@
     },   
     {
         "serialNumber": "1003",
-        "dateOfProd": "2019-03",
+        "dateOfProd": "2020-03",
         "brand": "Citroen",
         "car": ["C5"],
         "basePrice": "30",
@@ -37,7 +37,7 @@
         }, 
     {
         "serialNumber": "1004",
-        "dateOfProd": "2019-04",
+        "dateOfProd": "2020-04",
         "brand": "Audi",
         "car": ["Q3", "Q4"],
         "basePrice": "60",
@@ -49,7 +49,7 @@
         },
         {
             "serialNumber": "1005",
-            "dateOfProd": "2019-05",
+            "dateOfProd": "2020-05",
             "brand": "Audi",
             "car": ["Q4", "Q5", "Q7"],
             "basePrice": "50",
@@ -62,7 +62,7 @@
 
         {
             "serialNumber": "1006",
-            "dateOfProd": "2019-06",
+            "dateOfProd": "2020-06",
             "brand": "BMW",
             "car": ["Serie 7", "Serie 5", "Serie 3"],
             "basePrice": "40",
@@ -74,7 +74,7 @@
             },
             {
                 "serialNumber": "1007",
-                "dateOfProd": "2019-07",
+                "dateOfProd": "2020-07",
                 "brand": "BMW",
                 "car": ["Serie 3", "Serie 5"],
                 "basePrice": "78",
@@ -86,7 +86,7 @@
                 },
                 {
                     "serialNumber": "1008",
-                    "dateOfProd": "2019-08",
+                    "dateOfProd": "2020-08",
                     "brand": "Opel",
                     "car": ["Astra", "Insignia"],
                     "basePrice": "30",
@@ -98,7 +98,7 @@
                     },
                     {
                         "serialNumber": "1009",
-                        "dateOfProd": "2019-09",
+                        "dateOfProd": "2020-09",
                         "brand": "Opel",
                         "car": ["Insignia"],
                         "basePrice": "30",
@@ -110,7 +110,7 @@
                         },
  {
     "serialNumber": "1010",
-    "dateOfProd": "2019-10",
+    "dateOfProd": "2020-10",
     "brand": "Volkswagen",
     "car": ["Golf", "Passat", "Eos"],
     "basePrice": "50",
@@ -122,7 +122,7 @@
     },
     {
         "serialNumber": "1011",
-        "dateOfProd": "2019-11",
+        "dateOfProd": "2020-11",
         "brand": "Dacia",
         "car": ["Logan", "Sandero", "Duster"],
         "basePrice": "30",
@@ -134,7 +134,7 @@
     },   
     {
         "serialNumber": "1012",
-        "dateOfProd": "2019-12",
+        "dateOfProd": "2020-12",
         "brand": "Fiat",
         "car": ["Punto", "500", "Tipo"],
         "basePrice": "30",
@@ -146,7 +146,7 @@
         }, 
     {
         "serialNumber": "1013",
-        "dateOfProd": "2020-01",
+        "dateOfProd": "2021-01",
         "brand": "Hyundai",
         "car": ["santa Fe", "i30", "i40", "Tucson"],
         "basePrice": "60",
@@ -158,7 +158,7 @@
         },
         {
             "serialNumber": "1014",
-            "dateOfProd": "2020-02",
+            "dateOfProd": "2021-02",
             "brand": "Audi",
             "car": ["Q4", "Q5", "Q7"],
             "basePrice": "50",
@@ -171,7 +171,7 @@
 
         {
             "serialNumber": "1015",
-            "dateOfProd": "2019-05",
+            "dateOfProd": "2020-05",
             "brand": "Audi",
             "car": ["Q5"],
             "basePrice": "40",
@@ -183,7 +183,7 @@
             },
             {
                 "serialNumber": "1016",
-                "dateOfProd": "2019-01",
+                "dateOfProd": "2020-01",
                 "brand": "BMW",
                 "car": ["Serie 3", "Serie 5"],
                 "basePrice": "78",
@@ -195,7 +195,7 @@
                 },
                 {
                     "serialNumber": "1017",
-                    "dateOfProd": "2019-01",
+                    "dateOfProd": "2020-03",
                     "brand": "Citroen",
                     "car": ["C3", "C4"],
                     "basePrice": "30",
@@ -207,7 +207,7 @@
                     },
                     {
                         "serialNumber": "1018",
-                        "dateOfProd": "2019-01",
+                        "dateOfProd": "2020-04",
                         "brand": "Citroen",
                         "car": ["C5"],
                         "basePrice": "30",
@@ -219,7 +219,7 @@
                         }, 
                         {
                                 "serialNumber": "1019",
-                                "dateOfProd": "2019-02",
+                                "dateOfProd": "2020-02",
                                 "brand": "Audi",
                                 "car": ["Q4", "Q5", "Q7"],
                                 "basePrice": "50",
@@ -231,7 +231,7 @@
                                 },
                                 {
                                     "serialNumber": "1020",
-                                    "dateOfProd": "2019-01",
+                                    "dateOfProd": "2020-01",
                                     "brand": "Citroen",
                                     "car": ["C5"],
                                     "basePrice": "30",
@@ -243,7 +243,7 @@
                                 },   
                                 {
                                     "serialNumber": "1021",
-                                    "dateOfProd": "2019-01",
+                                    "dateOfProd": "2021-01",
                                     "brand": "Citroen",
                                     "car": ["C5"],
                                     "basePrice": "30",
@@ -255,7 +255,7 @@
                                     }, 
                                 {
                                     "serialNumber": "1022",
-                                    "dateOfProd": "2020-02",
+                                    "dateOfProd": "2021-02",
                                     "brand": "Audi",
                                     "car": ["Q3", "Q4"],
                                     "basePrice": "60",
@@ -267,7 +267,7 @@
                                     },
                                     {
                                         "serialNumber": "1023",
-                                        "dateOfProd": "2019-02",
+                                        "dateOfProd": "2020-02",
                                         "brand": "Audi",
                                         "car": ["Q4", "Q5", "Q7"],
                                         "basePrice": "50",
@@ -280,7 +280,7 @@
                             
                                     {
                                         "serialNumber": "1024",
-                                        "dateOfProd": "2019-05",
+                                        "dateOfProd": "2020-05",
                                         "brand": "Audi",
                                         "car": ["Q5"],
                                         "basePrice": "40",
@@ -292,7 +292,7 @@
                                         },
                                         {
                                             "serialNumber": "1025",
-                                            "dateOfProd": "2019-01",
+                                            "dateOfProd": "2020-01",
                                             "brand": "BMW",
                                             "car": ["Serie 3", "Serie 5"],
                                             "basePrice": "78",
@@ -304,7 +304,7 @@
                                             },
                                             {
                                                 "serialNumber": "1026",
-                                                "dateOfProd": "2019-01",
+                                                "dateOfProd": "2020-01",
                                                 "brand": "Citroen",
                                                 "car": ["C3", "C4"],
                                                 "basePrice": "30",
@@ -316,7 +316,7 @@
                                                 },
                                                 {
                                                     "serialNumber": "1027",
-                                                    "dateOfProd": "2019-01",
+                                                    "dateOfProd": "2020-01",
                                                     "brand": "Citroen",
                                                     "car": ["C5"],
                                                     "basePrice": "30",

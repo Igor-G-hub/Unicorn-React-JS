@@ -13,10 +13,16 @@ class Warehouse extends Component {
                         },
           search: {
                    bySerialNumber: "",
-                   byDateOfProd: "",
+                   byDateOfProdYear: "",
+                   byDateOfProdMonth: "",
                    byBrand: "",
                    byCar: ""
                   },
+
+          selectYear: "idYear",
+          selectMonth: "idMonth",
+          selectBrand: "idBrand",
+          selectCar: "idCar",
 
           searchResult: null                                        
         }  
@@ -82,7 +88,7 @@ class Warehouse extends Component {
               }))
           } 
         this.setState(prevState => ({
-          search: {...prevState.search, bySerialNumber: value, byDateOfProd: "", byBrand: "", byCar: ""}
+          search: {...prevState.search, bySerialNumber: value, byDateOfProdYear: "", byDateOfProdMonth: "", byBrand: "", byCar: ""}
         }))
     }
 
@@ -111,70 +117,121 @@ class Warehouse extends Component {
           }))
     }  
    
-  handleSearchBtn = () => {
+  handleSearchSerialNum = () => {
    
     let searchArray = dataBase.map((item, index) => {
       if (item.serialNumber == this.state.search.bySerialNumber) {
        return (       
-          <>
+        <div key={index}>
           <i key={index + 1} style={{paddingLeft: 10}}>{"{"}</i>
           <p key={index + 2}><i>{'"serialNumber" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
-          <p key={index + 3}><i>{'"dateOfProd": '}</i><i>{JSON.stringify((new Date(item.dateOfProd)).getFullYear)}</i>{','}</p>
+          <p key={index + 3}><i>{'"dateOfProd": '}</i><i>{JSON.stringify(item.dateOfProd)}</i>{','}</p>
           <p key={index + 4}><i>{'"brand": '}</i><i>{JSON.stringify(item.brand)}</i>{','}</p>
-          <p key={index + 5}><i>{'"car": '}</i><i>{'['}</i><i>{JSON.stringify(item.car[0])}</i><i>{']'}</i>{','}</p>
+          <p key={index + 5}><i>{'"car": '}</i><i>{JSON.stringify(item.car.map(car => {return car}))}</i>{','}</p>
           <p key={index + 6}><i>{'"basePrice": '}</i><i>{JSON.stringify(item.basePrice)}</i>{','}</p>
           <p key={index + 7}><i>{'"action": {'}</i></p>
-          <p key={index + 8} style={{paddingLeft: 60}}><i>{'"startDate" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
-          <p key={index + 9} style={{paddingLeft: 60}}><i>{'"expireDate" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
-          <p key={index + 10} style={{paddingLeft: 60}}><i>{'"discountPercent" : '}</i><i>{JSON.stringify(item.action.startDate)}</i></p>
+          <p key={index + 8} style={{paddingLeft: 60}}><i>{'"startDate" : '}</i><i>{JSON.stringify(item.action.startDate)}</i>{','}</p>
+          <p key={index + 9} style={{paddingLeft: 60}}><i>{'"expireDate" : '}</i><i>{JSON.stringify(item.action.expireDate)}</i>{','}</p>
+          <p key={index + 10} style={{paddingLeft: 60}}><i>{'"discountPercent" : '}</i><i>{JSON.stringify(item.action.discountPercent)}</i></p>
           <i key={index + 11} style={{paddingLeft: 60}}>{"}"}</i>
-          <i key={index + 12} style={{paddingLeft: 10}}>{'},'}</i>
-          </>    
+          <p key={index + 12} style={{paddingLeft: 10}}>{'},'}</p>
+        </div>    
        )        
       } 
    })
-
    searchArray = searchArray.filter(item => {
      if (item !== undefined) {
        return item;
      }
    });
+
   if (searchArray[0] === undefined) {
     searchArray = null;
   }
    return searchArray;
   }
 
-  //   return (
-  //   dataBase.map((item, index) => {
-  //     if (item.brand == this.state.search.bySerialNumber) {
-  //      return (       
-  //         <>
-  //         <i key={index + 1} style={{paddingLeft: 10}}>{"{"}</i>
-  //         <p key={index + 2}><i>{'"serialNumber" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
-  //         <p key={index + 3}><i>{'"dateOfProd": '}</i><i>{JSON.stringify((new Date(item.dateOfProd)).getFullYear)}</i>{','}</p>
-  //         <p key={index + 4}><i>{'"brand": '}</i><i>{JSON.stringify(item.brand)}</i>{','}</p>
-  //         <p key={index + 5}><i>{'"car": '}</i><i>{'['}</i><i>{JSON.stringify(item.car[0])}</i><i>{']'}</i>{','}</p>
-  //         <p key={index + 6}><i>{'"basePrice": '}</i><i>{JSON.stringify(item.basePrice)}</i>{','}</p>
-  //         <p key={index + 7}><i>{'"action": {'}</i></p>
-  //         <p key={index + 8} style={{paddingLeft: 60}}><i>{'"startDate" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
-  //         <p key={index + 9} style={{paddingLeft: 60}}><i>{'"expireDate" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
-  //         <p key={index + 10} style={{paddingLeft: 60}}><i>{'"discountPercent" : '}</i><i>{JSON.stringify(item.action.startDate)}</i></p>
-  //         <i key={index + 11} style={{paddingLeft: 60}}>{"}"}</i>
-  //         <i key={index + 12} style={{paddingLeft: 10}}>{'},'}</i>
-  //         </>    
-  //      )        
-  //     }
-  // }))
 
-
-    handleSearchSetState = () => {
-      this.handleSearchBtn();
-      const search = this.handleSearchBtn();
+    handleSearchSetStateSerialNum = () => {
+      this.handleSearchSerialNum();
+      const search = this.handleSearchSerialNum();
       if (search !== [undefined]) {
       this.setState({searchResult: search});
       }
     }
+
+  handleDateofProdSelector = (value, eventId) => {
+     if (eventId == this.state.selectYear) {
+       this.setState(prevState => ({
+         search: {...prevState.search, bySerialNumber: "", byDateOfProdYear: value, byBrand: "", byCar: ""}
+       }))
+     };
+     if (eventId == this.state.selectMonth) {
+      this.setState(prevState => ({
+        search: {...prevState.search, bySerialNumber: "", byDateOfProdMonth: value, byBrand: "", byCar: ""}
+      }))
+    };
+  }  
+
+  handleSearchDateofProd = () => {
+      const dateOfPRod = this.state.search.byDateOfProdYear + '-' + this.state.search.byDateOfProdMonth;
+        console.log(dateOfPRod);
+      let searchArray = dataBase.map((item, index) => {
+      if (item.dateOfProd == dateOfPRod) {
+       return (       
+        <div key={index}>
+          <i key={index + 1} style={{paddingLeft: 10}}>{"{"}</i>
+          <p key={index + 2}><i>{'"serialNumber" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
+          <p key={index + 3}><i>{'"dateOfProd": '}</i><i>{JSON.stringify(item.dateOfProd)}</i>{','}</p>
+          <p key={index + 4}><i>{'"brand": '}</i><i>{JSON.stringify(item.brand)}</i>{','}</p>
+          <p key={index + 5}><i>{'"car": '}</i><i>{JSON.stringify(item.car.map(car => {return car}))}</i>{','}</p>
+          <p key={index + 6}><i>{'"basePrice": '}</i><i>{JSON.stringify(item.basePrice)}</i>{','}</p>
+          <p key={index + 7}><i>{'"action": {'}</i></p>
+          <p key={index + 8} style={{paddingLeft: 60}}><i>{'"startDate" : '}</i><i>{JSON.stringify(item.action.startDate)}</i>{','}</p>
+          <p key={index + 9} style={{paddingLeft: 60}}><i>{'"expireDate" : '}</i><i>{JSON.stringify(item.action.expireDate)}</i>{','}</p>
+          <p key={index + 10} style={{paddingLeft: 60}}><i>{'"discountPercent" : '}</i><i>{JSON.stringify(item.action.discountPercent)}</i></p>
+          <i key={index + 11} style={{paddingLeft: 60}}>{"}"}</i>
+          <p key={index + 12} style={{paddingLeft: 10}}>{'},'}</p>
+        </div>   
+       )        
+      } 
+   })
+   searchArray = searchArray.filter(item => {
+     if (item !== undefined) {
+       return item;
+     }
+   });
+
+  if (searchArray[0] === undefined) {
+    searchArray = null;
+  }
+   return searchArray;
+  }
+
+  handleSearchSetStateDateofProd = () => {
+    this.handleSearchDateofProd();
+    const search = this.handleSearchDateofProd();
+    if (search !== [undefined]) {
+    this.setState({searchResult: search});
+    }
+  }
+
+  handleBrandAndCarSelector = (value, eventId) => {
+    if (eventId == this.state.selectBrand) {
+      this.setState(prevState => ({
+        search: {...prevState.search, bySerialNumber: "", byDateOfProdYear: "", byDateOfProdMonth: "", byBrand: value, byCar: ""}
+      }))
+    };
+    if (eventId == this.state.selectCar) {
+     this.setState(prevState => ({
+       search: {...prevState.search, bySerialNumber: "", byDateOfProdYear: "", byDateOfProdMonth: "", byCar: value}
+     }))
+   };
+ }   
+
+
+
+ 
 
     render() { 
         return (
@@ -189,49 +246,51 @@ class Warehouse extends Component {
         disabled={this.state.activeForm.serialNumber ? undefined : "disabled"}
 
         /> 
-        <button onClick={() => this.handleSearchSetState()}>Search item</button> 
+        <button onClick={() => this.handleSearchSetStateSerialNum()}>Search item</button> 
         <button>Add item</button> 
         <button>Remove item</button><br></br> 
         <label htmlFor="">Date of production:</label><br></br>
-        <select  className="warehouse-year-select" disabled={this.state.activeForm.dateOfProd ? undefined : "disabled"}
+        <select id={this.state.selectYear} className="warehouse-year-select" disabled={this.state.activeForm.dateOfProd ? undefined : "disabled"}
                 onFocus={(e) => this.handleEnableingDateOfProducitonOnFocus(e.target.value)}
                 onBlur={(e) => this.handleEnableingDateOfProducitonOnBlur(e.target.value)}
+                onChange={(e) => this.handleDateofProdSelector(e.target.value, e.target.id)}
         >
           
         <option value=""></option>
-        <option value="2019">2020</option>
-        <option value="2019">2019</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
         </select>
         <span>/</span>
-        <select className="warehouse-month-select" 
+        <select id={this.state.selectMonth} className="warehouse-month-select" 
             disabled={this.state.activeForm.dateOfProd ? undefined : "disabled"}
             onFocus={(e) => this.handleEnableingDateOfProducitonOnFocus(e.target.value)}
-            onBlur={(e) => this.handleEnableingDateOfProducitonOnBlur(e.target.value)}           
+            onBlur={(e) => this.handleEnableingDateOfProducitonOnBlur(e.target.value)}
+            onChange={(e) => this.handleDateofProdSelector(e.target.value, e.target.id)}           
         >
         <option value=""></option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>            
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
+        <option value="01">1</option>
+        <option value="02">2</option>
+        <option value="03">3</option>
+        <option value="04">4</option>
+        <option value="05">5</option>            
+        <option value="06">6</option>
+        <option value="07">7</option>
+        <option value="08">8</option>
+        <option value="09">9</option>
         <option value="10">10</option>
         <option value="11">11</option>
         <option value="12">12</option>
         </select>
 
-        <button type="submit" on>Search item</button> 
+        <button onClick={() => this.handleSearchSetStateDateofProd()}>Search item</button> 
         <button type="submit">Add item</button> 
         <button type="submit">Remove item</button><br></br>
 
         <label htmlFor="">Brand and car:</label><br></br>
-        <select className="warehouse-brand-select"
+        <select id={this.state.selectBrand} className="warehouse-brand-select"
         onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
         onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
-        onChange={(e) => this.props.brandSelector(e.target.value)}
+        onChange={(e) => {this.props.brandSelector(e.target.value); this.handleBrandAndCarSelector(e.target.value, e.target.id)}}
         disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
                                                            
         >
@@ -240,11 +299,11 @@ class Warehouse extends Component {
                 )}            
         </select> 
 
-        <select className="warehouse-car-select" 
+        <select id={this.state.selectCar} className="warehouse-car-select" 
         onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
         onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
         disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
-
+        onChange={(e) => this.handleBrandAndCarSelector(e.target.value, e.target.id)}    
         >
         {this.handleCarSelectorOptions().map((car, index) =>
             <option key={index} value={car}>{car}</option>
@@ -252,7 +311,7 @@ class Warehouse extends Component {
             
         </select>       
 
-        <button type="submit">Search item</button> 
+        <button>Search item</button> 
         <button type="submit">Add item</button> 
         <button type="submit">Remove item</button>
      </div>
@@ -260,14 +319,11 @@ class Warehouse extends Component {
      {this.state.searchResult ? 
      (<SelectedItems
      search={this.state.search}
-     handleSearchBtn={this.handleSearchBtn}
      searchResult={this.state.searchResult}
      />) : null}
     
   
   </div>
-  
-
 
   </>
   );
