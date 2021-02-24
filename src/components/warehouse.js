@@ -12,10 +12,10 @@ class Warehouse extends Component {
                         brandCarSElect: true,
                         },
           search: {
-                   serialNumber: "",
-                   dateOfProd: "",
-                   brand: "",
-                   car: ""
+                   bySerialNumber: "",
+                   byDateOfProd: "",
+                   byBrand: "",
+                   byCar: ""
                   }                  
         }  
 
@@ -70,15 +70,18 @@ class Warehouse extends Component {
     return arrayCar;        
     }   
      
-    handleEnableingSerialNumber = (condition) => {
+    handleInputSerialNumber = (value) => {
           this.setState(prevState => ({
             activeForm: {...prevState.activeForm, serialNumber: true, dateOfProd: false, brandCarSElect: false}             
           }))
-          if (!condition) {
+          if (!value) {
               this.setState(prevState => ({
                 activeForm: {...prevState.activeForm, serialNumber: true, dateOfProd: true, brandCarSElect: true}
               }))
-          }                    
+          } 
+        this.setState(prevState => ({
+          search: {...prevState.search, bySerialNumber: value, byDateOfProd: "", byBrand: "", byCar: ""}
+        }))
     }
 
     handleEnableingDateOfProducitonOnFocus = (condition) => {
@@ -105,32 +108,33 @@ class Warehouse extends Component {
             activeForm: {...prevState.activeForm, serialNumber: true, dateOfProd: true, brandCarSElect: true}
           }))
     }  
-
-  handleSearchSerNumber = () => {
-    console.log();
-  }
-
    
+   handleSearchBtn = () => {
+      return this.state.search.bySerialNumber;
+   }
+
     render() { 
         return (
             <>
 <div className="warehouse-main">
     <button className="logout-button">Logout</button>
     <h1>Warehouse</h1>
-    <form>
+    <div>
         <label htmlFor="serial-number">Serial number:</label><br></br>
-        <input disabled={this.state.activeForm.serialNumber ? undefined : "disabled"} 
-        type="text" id="serial-number" placeholder="enter serial number..." 
-        onChange={(e) => this.handleEnableingSerialNumber(e.target.value)}
+        <input type="text" id="serial-number" placeholder="enter serial number..." 
+        onChange={(e) => this.handleInputSerialNumber(e.target.value)}
+        disabled={this.state.activeForm.serialNumber ? undefined : "disabled"}
+
         /> 
-        <button type="submit" onClick={(e) => this.handleSearchSerNumber(e.target.value)}>Search item</button> 
-        <button type="submit">Add item</button> 
-        <button type="submit">Remove item</button><br></br> 
+        <button onClick={() => this.handleSearchBtn()}>Search item</button> 
+        <button>Add item</button> 
+        <button>Remove item</button><br></br> 
         <label htmlFor="">Date of production:</label><br></br>
-        <select disabled={this.state.activeForm.dateOfProd ? undefined : "disabled"} className="warehouse-year-select" 
+        <select  className="warehouse-year-select" disabled={this.state.activeForm.dateOfProd ? undefined : "disabled"}
                 onFocus={(e) => this.handleEnableingDateOfProducitonOnFocus(e.target.value)}
                 onBlur={(e) => this.handleEnableingDateOfProducitonOnBlur(e.target.value)}
         >
+          
         <option value=""></option>
         <option value="2019">2020</option>
         <option value="2019">2019</option>
@@ -156,16 +160,16 @@ class Warehouse extends Component {
         <option value="12">12</option>
         </select>
 
-        <button type="submit">Search item</button> 
+        <button type="submit" on>Search item</button> 
         <button type="submit">Add item</button> 
         <button type="submit">Remove item</button><br></br>
 
         <label htmlFor="">Brand and car:</label><br></br>
         <select className="warehouse-brand-select"
-        disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"} 
         onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
         onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
         onChange={(e) => this.props.brandSelector(e.target.value)}
+        disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
                                                            
         >
         {this.handleBrandSelectorOptions().map((brand, index) =>
@@ -174,9 +178,10 @@ class Warehouse extends Component {
         </select> 
 
         <select className="warehouse-car-select" 
-        disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
         onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
         onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
+        disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
+
         >
         {this.handleCarSelectorOptions().map((car, index) =>
             <option key={index} value={car}>{car}</option>
@@ -187,8 +192,13 @@ class Warehouse extends Component {
         <button type="submit">Search item</button> 
         <button type="submit">Add item</button> 
         <button type="submit">Remove item</button>
-     </form>
-     {/* <SelectedItems /> */}
+     </div>
+     <SelectedItems
+     search={this.state.search}
+     handleSearchBtn={this.handleSearchBtn}
+
+     />
+    
   
   </div>
   

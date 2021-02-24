@@ -3,27 +3,43 @@ import dataBase from './dataBase.json';
 
 class SelectedItems extends Component {
     state = {  }
+
+  
+
+
+
     render() { 
+        const date = dataBase[0].dateOfProd;
+        console.log('selected', new Date(date).getFullYear());
         return (
             <>
             <div className="json-rendering">
-                <p style={{marginBottom: 10}}>{'['}</p>
+            <i style={{marginBottom: 10}}>{'['}</i>
+                {dataBase.map((item, index) => {
+                    if (item.brand == this.props.handleSearchBtn()) {
+                     return (       
+                        <>
 
-                <p style={{paddingLeft: 10}}>{"{"}</p>
-                <p><i>{'"serialNumber" : '}</i><i>{JSON.stringify(dataBase[0].serialNumber)}</i>{','}</p>
-                <p><i>{'"dateOfProd": '}</i><i>{JSON.stringify(dataBase[0].dateOfProd)}</i>{','}</p>
-                <p><i>{'"brand": '}</i><i>{JSON.stringify(dataBase[0].brand)}</i>{','}</p>
-                <p><i>{'"car": '}</i><i>{'['}</i><i>{JSON.stringify(dataBase[0].car[0])}</i><i>{']'}</i>{','}</p>
-                <p><i>{'"basePrice": '}</i><i>{JSON.stringify(dataBase[0].basePrice)}</i>{','}</p>
-                <p><i>{'"action": {'}</i></p>
-                <p style={{paddingLeft: 60}}><i>{'"startDate" : '}</i><i>{JSON.stringify(dataBase[0].serialNumber)}</i>{','}</p>
-                <p style={{paddingLeft: 60}}><i>{'"expireDate" : '}</i><i>{JSON.stringify(dataBase[0].serialNumber)}</i>{','}</p>
-                <p style={{paddingLeft: 60}}><i>{'"discountPercent" : '}</i><i>{JSON.stringify(dataBase[0].action.startDate)}</i></p>
-                <p style={{paddingLeft: 60}}>{"}"}</p>
-                <p style={{paddingLeft: 10}}>{'}'}</p>
+                        <i key={index + 1} style={{paddingLeft: 10}}>{"{"}</i>
+                        <p key={index + 2}><i>{'"serialNumber" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
+                        <p key={index + 3}><i>{'"dateOfProd": '}</i><i>{JSON.stringify((new Date(item.dateOfProd)).getFullYear)}</i>{','}</p>
+                        <p key={index + 4}><i>{'"brand": '}</i><i>{JSON.stringify(item.brand)}</i>{','}</p>
+                        <p key={index + 5}><i>{'"car": '}</i><i>{'['}</i><i>{JSON.stringify(item.car[0])}</i><i>{']'}</i>{','}</p>
+                        <p key={index + 6}><i>{'"basePrice": '}</i><i>{JSON.stringify(item.basePrice)}</i>{','}</p>
+                        <p key={index + 7}><i>{'"action": {'}</i></p>
+                        <p key={index + 8} style={{paddingLeft: 60}}><i>{'"startDate" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
+                        <p key={index + 9} style={{paddingLeft: 60}}><i>{'"expireDate" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
+                        <p key={index + 10} style={{paddingLeft: 60}}><i>{'"discountPercent" : '}</i><i>{JSON.stringify(item.action.startDate)}</i></p>
+                        <i key={index + 11} style={{paddingLeft: 60}}>{"}"}</i>
+                        <i key={index + 12} style={{paddingLeft: 10}}>{'},'}</i>
+        
+                        </>    
 
-                <p style={{marginTop: 10}}>{"]"}</p>
+                     )        
+                    }
+                })}
 
+                <i style={{marginTop: 10}}>{"]"}</i>  
             </div> 
             </>    
          );
