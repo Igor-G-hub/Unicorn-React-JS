@@ -5,21 +5,19 @@ class SelectedItems extends Component {
     state = {  }
 
   
-
-
-
     render() { 
-        const date = dataBase[0].dateOfProd;
-        console.log('selected', new Date(date).getFullYear());
+        
         return (
             <>
             <div className="json-rendering">
             <i style={{marginBottom: 10}}>{'['}</i>
-                {dataBase.map((item, index) => {
-                    if (item.brand == this.props.handleSearchBtn()) {
+
+                {this.props.searchResult}
+
+                {/* {dataBase.map((item, index) => {
+                    if (item.brand == this.props.search.bySerialNumber) {
                      return (       
                         <>
-
                         <i key={index + 1} style={{paddingLeft: 10}}>{"{"}</i>
                         <p key={index + 2}><i>{'"serialNumber" : '}</i><i>{JSON.stringify(item.serialNumber)}</i>{','}</p>
                         <p key={index + 3}><i>{'"dateOfProd": '}</i><i>{JSON.stringify((new Date(item.dateOfProd)).getFullYear)}</i>{','}</p>
@@ -32,12 +30,10 @@ class SelectedItems extends Component {
                         <p key={index + 10} style={{paddingLeft: 60}}><i>{'"discountPercent" : '}</i><i>{JSON.stringify(item.action.startDate)}</i></p>
                         <i key={index + 11} style={{paddingLeft: 60}}>{"}"}</i>
                         <i key={index + 12} style={{paddingLeft: 10}}>{'},'}</i>
-        
                         </>    
-
                      )        
                     }
-                })}
+                })} */}
 
                 <i style={{marginTop: 10}}>{"]"}</i>  
             </div> 

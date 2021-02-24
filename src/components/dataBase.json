@@ -111,7 +111,7 @@
  {
     "serialNumber": "1010",
     "dateOfProd": "2019-10",
-    "brand": "VolksWagen",
+    "brand": "Volkswagen",
     "car": ["Golf", "Passat", "Eos"],
     "basePrice": "50",
     "action": {
