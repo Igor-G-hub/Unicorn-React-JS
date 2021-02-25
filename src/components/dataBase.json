@@ -325,20 +325,19 @@
                                                             "expireDate":"2020-04-01",
                                                             "discountPercent": "10"
                                                             }
-                                                    }                                                            
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
+                                                    },
+                                                    {
+                                                        "serialNumber": "1027",
+                                                        "dateOfProd": "2020-01",
+                                                        "brand": "Audi",
+                                                        "car": ["Q3", "Q5", "Q7"],
+                                                        "basePrice": "50",
+                                                        "action": {
+                                                                "startDate":"2020-02-01",
+                                                                "expireDate":"2020-04-01",
+                                                                "discountPercent": "10"
+                                                                }
+                                                    }        
+    
 
 ] 

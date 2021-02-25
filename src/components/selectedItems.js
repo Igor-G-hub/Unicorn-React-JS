@@ -14,7 +14,6 @@ class SelectedItems extends Component {
 
                 {this.props.searchResult}
 
-
                 <p style={{marginTop: 10}}>{"]"}</p>  
             </div> 
             </>    

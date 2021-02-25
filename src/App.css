@@ -258,3 +258,47 @@ body {
     font-size: 1rem;
     border-radius: 10px;
 }
+
+.add-items {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.add-items h3 {
+    padding-bottom: 30px;
+    margin-left: 0px;
+}
+
+.add-items label: {
+}
+
+.add-items input: {
+}
+
+.add-items button {
+    margin-left: 30px;
+}
+
+.add-items select {
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.add-items span {
+    font-size: 1.3rem;
+    padding: 0 15px 0 15px;
+}
+
+.input-car {
+    width: 15%;
+}
+
+.add-items p {
+    font-size: 0.8rem;
+    color: rgb(238, 70, 70);
+    margin-bottom: 0px;
+}
+
+.add-items h5 {
+    padding: 8px 16px;
+}
