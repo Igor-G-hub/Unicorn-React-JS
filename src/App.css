@@ -8,6 +8,9 @@ body {
     font-family: 'Roboto', sans-serif;
     overflow-y: auto;
     background-color: rgb(0, 0, 0, 0.7);
+    background-image: url('image/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg');
+    background-repeat: repeat;
+    background-size: cover;
 }
 
 .background-set {
@@ -16,7 +19,7 @@ body {
     z-index: -1;
 }
 
-.background-set:before {
+/* .background-set:before {
     content: '';
     display: block;
     position: absolute;
@@ -27,10 +30,10 @@ body {
     z-index: -1;
     opacity: 0.7;
     background-image: url('image/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: 50% 50%;
     background-size: cover;
-}
+} */
 
 .btn-containers {
     position: absolute;
@@ -157,27 +160,28 @@ body {
 }
 
 .warehouse-main {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    padding: 20px 200px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     color: white;
+    justify-content: center;
     width: 80%;
     align-items: center;
-    margin-top: 0px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 30px;
 }
 
 .warehouse-main h1 {
-    padding: 30px 0 40px 0;
     letter-spacing: 0.5rem;
     font-size: 2.5rem;
+    padding: 50px 30px 50px 30px;
+}
+
+.warehouse-main h3 {
+    padding: 20px 0 0 30px;
 }
 
 .warehouse-main label {
@@ -227,6 +231,10 @@ body {
     cursor: pointer;
 }
 
+.warehouse-btns {
+    padding: 20px 0 0 25px;
+}
+
 .warehouse-main button:focus {
     outline: none;
 }
@@ -239,13 +247,25 @@ body {
 }
 
 .warehouse-car-select {
-    padding: 8px 8px;
+    padding: 8px 12px;
     border-radius: 20px;
-    margin-left: 30px;
+    margin-left: 25px;
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.json-rendering {
+.btn-brand {
+    margin: 100px;
+}
+
+.form button {
+    margin-left: 40px;
+    /* background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-content: center; */
+}
+
+/* .json-rendering {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -257,40 +277,67 @@ body {
     letter-spacing: 1px;
     font-size: 1rem;
     border-radius: 10px;
+} */
+
+.json-padding {
+    width: 30%;
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
 }
 
 .add-items {
-    width: 100%;
-    padding-top: 30px;
+    width: 30%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
 }
 
 .add-items h3 {
-    padding-bottom: 30px;
-    margin-left: 0px;
+    align-self: flex-start;
+    margin-left: 25px;
 }
 
-.add-items label: {
+.add-items label {
+    margin-bottom: 5px;
 }
 
-.add-items input: {
-}
-
-.add-items button {
+.add-items input {
     margin-left: 30px;
+    width: 80%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.buttons {
+    margin-left: 25px;
 }
 
 .add-items select {
-    padding: 8px 16px;
+    padding: 8px 8px;
     border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+.select {
+    margin-left: 30px;
+}
+
+.add-select-month {
+    width: 25%;
+    margin-left: 5px;
 }
 
 .add-items span {
     font-size: 1.3rem;
-    padding: 0 15px 0 15px;
-}
-
-.input-car {
-    width: 15%;
+    padding: 0 5px;
+    margin-left: 5px;
 }
 
 .add-items p {
@@ -301,4 +348,102 @@ body {
 
 .add-items h5 {
     padding: 8px 16px;
+}
+
+.remove-items {
+    width: 25%;
+    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.remove-items h3 {
+    padding: 30px 0;
+}
+
+.remove-items label {
+    align-self: flex-start;
+    padding: 0;
+}
+
+.remove-items input {
+    margin-top: 0;
+}
+
+.remove-items button {
+    margin-top: 0;
+}
+
+.remove-items h4 {
+    font-size: 0.8rem;
+    color: rgb(238, 70, 70);
+    margin-bottom: 0px;
+}
+
+.remove-items h5 {
+    margin-bottom: 30px;
+}
+
+.sales-main {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    width: 80%;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    padding: 30px;
+}
+
+.sales-main h1 {
+    letter-spacing: 0.5rem;
+    font-size: 2.5rem;
+    padding: 50px 30px 50px 30px;
+}
+
+.sales-main label {
+    font-size: 1rem;
+    color: white;
+    width: 30%;
+    padding-left: 15px;
+}
+
+.sales-main input {
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 0 15px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.sales-main button {
+    border-radius: 20px;
+    background-color: rgb(80, 76, 76);
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    margin: 10px;
+}
+
+.search-p {
+    width: 30%;
+    margin: 10px 0;
+    padding-left: 15px;
+}
+
+.json {
+    width: 30%;
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
 }

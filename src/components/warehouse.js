@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import dataBase from './dataBase.json';
 import SelectedItems from './selectedItems';
 import AddItems from './addItemsWare.js';
+import RemoveItems from './wareRemoveItems';
+import CountedParts from './countedParts';
 
 
 class Warehouse extends Component {
@@ -27,11 +29,17 @@ class Warehouse extends Component {
 
           searchResult: null,
           addingItem: null,
+          removingItem: null,
           buttonIds: {
                   addButton: "addButton",
                   removeButton: "removeButton",
-                  closeAddButton: "closeAddButton" 
-          }        
+                  closeAddButton: "closeAddButton",
+                  closeRemoveButton: "closeRemoveButton"
+          },
+          resultMessages: {
+                            found: "",
+                            didNotFound: ""
+                          }        
         }  
 
     handleBrandSelectorOptions = () => {
@@ -162,8 +170,17 @@ class Warehouse extends Component {
     handleSearchSetStateSerialNum = () => {
       this.handleSearchSerialNum();
       const search = this.handleSearchSerialNum();
-      if (search !== [undefined]) {
+      console.log('provjera', Boolean(search));
+      if (search) {
       this.setState({searchResult: search});
+      this.setState(prevState => ({
+        resultMessages: {...prevState.resultMessages, found: "Results: found " + search.length + " items", didNotFound: ""}
+      }));
+      } else {
+        this.setState({searchResult: null});
+        this.setState(prevState => ({
+          resultMessages: {...prevState.resultMessages, didNotFound: "There is no search result..."}
+        }))
       }
     }
 
@@ -217,8 +234,15 @@ class Warehouse extends Component {
   handleSearchSetStateDateofProd = () => {
     this.handleSearchDateofProd();
     const search = this.handleSearchDateofProd();
-    if (search !== [undefined]) {
+    if (search) {
     this.setState({searchResult: search});
+    this.setState(prevState => ({
+      resultMessages: {...prevState.resultMessages, found: "Results: found " + search.length + " items", didNotFound: ""}
+    }));
+    } else {
+      this.setState(prevState => ({
+        resultMessages: {...prevState.resultMessages, didNotFound: "There is no search result..."}
+      }))
     }
   }
 
@@ -271,15 +295,21 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
      if (searchArray[0] === undefined) {
      searchArray = null;
      }
-     console.log('searchArray', searchArray);
      return searchArray;
    }
 
   handleSearchSetStateByBrandAndCar = () => {
     this.handleSearchBrandAndCar();
     const search = this.handleSearchBrandAndCar();
-    if (search !== [undefined]) {
+    if (search) {
     this.setState({searchResult: search});
+    this.setState(prevState => ({
+      resultMessages: {...prevState.resultMessages, found: "Results: found " + search.length + " items", didNotFound: ""}
+    }));
+    } else {
+      this.setState(prevState => ({
+        resultMessages: {...prevState.resultMessages, didNotFound: "There is no search result..."}
+      }))
     }
   } 
 
@@ -288,12 +318,28 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
 
     if (eventId == buttonIds.addButton) {
       this.setState({searchResult: null}); 
+      this.setState({removingItem: null,});
       this.setState({addingItem: true});
+      this.setState(prevState => ({
+         resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}  
+      }));
     }
 
     if (eventId == buttonIds.closeAddButton) {
+      this.setState({addingItem: null});
+    }
+
+    if (eventId == buttonIds.removeButton) {
       this.setState({searchResult: null}); 
       this.setState({addingItem: null});
+      this.setState({removingItem: true});
+      this.setState(prevState => ({
+        resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}  
+     }));
+    }
+
+    if (eventId == buttonIds.closeRemoveButton) {
+      this.setState({removingItem: null});
     }
   }
 
@@ -302,7 +348,7 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
         return (
             <>
 <div className="warehouse-main">
-    <button className="logout-button">Logout</button>
+    <button onClick={() => this.props.logout()} className="logout-button">Logout</button>
     <h1>Warehouse</h1>
     <div>
         <label htmlFor="serial-number">Serial number:</label><br></br>
@@ -311,9 +357,10 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
         disabled={this.state.activeForm.serialNumber ? undefined : "disabled"}
 
         /> 
-        <button onClick={() => this.handleSearchSetStateSerialNum()}>Search item</button><br></br> 
-        {/* <button>Add item</button>  */}
-        {/* <button>Remove item</button><br></br>  */}
+        <button 
+        disabled={this.state.activeForm.serialNumber ? undefined : "disabled"} 
+        onClick={() => this.handleSearchSetStateSerialNum()}>Search item
+        </button><br></br> 
         <label htmlFor="">Date of production:</label><br></br>
         <select id={this.state.selectYear} className="warehouse-year-select" required disabled={this.state.activeForm.dateOfProd ? undefined : "disabled"}
                 onFocus={(e) => this.handleEnableingDateOfProducitonOnFocus(e.target.value)}
@@ -346,42 +393,43 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
         <option value="11">11</option>
         <option value="12">12</option>
         </select>
-
         <button onClick={() => this.handleSearchSetStateDateofProd()}>Search item</button><br></br> 
-        {/* <button type="submit">Add item</button> 
-        <button type="submit">Remove item</button><br></br> */}
+        <div className="form">
+            <label htmlFor="">Brand and car:</label><br></br>
+            <select id={this.state.selectBrand} className="warehouse-brand-select"
+            onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
+            onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
+            onChange={(e) => {this.props.brandSelector(e.target.value); this.handleBrandAndCarSelector(e.target.value, e.target.id)}}
+            disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
+                                                              
+            >
+            {this.handleBrandSelectorOptions().map((brand, index) =>
+                <option key={index} value={brand}>{brand}</option>   
+                    )}            
+            </select> 
 
-        <label htmlFor="">Brand and car:</label><br></br>
-        <select id={this.state.selectBrand} className="warehouse-brand-select"
-        onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
-        onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
-        onChange={(e) => {this.props.brandSelector(e.target.value); this.handleBrandAndCarSelector(e.target.value, e.target.id)}}
-        disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
-                                                           
-        >
-        {this.handleBrandSelectorOptions().map((brand, index) =>
-            <option key={index} value={brand}>{brand}</option>   
-                )}            
-        </select> 
+            <select id={this.state.selectCar} value={this.state.search.byCar} className="warehouse-car-select" 
+            onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
+            onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
+            disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
+            onChange={(e) => this.handleBrandAndCarSelector(e.target.value, e.target.id)}    
+            >
+            {this.handleCarSelectorOptions().map((car, index) =>
+                <option key={index} value={car}>{car}</option>
+            )}    
+            </select>       
 
-        <select id={this.state.selectCar} value={this.state.search.byCar} className="warehouse-car-select" 
-        onFocus={(e) => this.handleEnableingCarOnFocus(e.target.value)}
-        onBlur={(e) => this.handleEnableingCarOnBlur(e.target.value)}
-        disabled={this.state.activeForm.brandCarSElect ? undefined : "disabled"}
-        onChange={(e) => this.handleBrandAndCarSelector(e.target.value, e.target.id)}    
-        >
-        {this.handleCarSelectorOptions().map((car, index) =>
-            <option key={index} value={car}>{car}</option>
-        )}    
-            
-        </select>       
-
-        <button onClick={() => this.handleSearchSetStateByBrandAndCar()} >Search item</button><br></br> 
-        {/* <button type="submit">Add item</button> 
-        <button type="submit">Remove item</button> */}
-        <button>List of parts</button>
-        <button id={this.state.buttonIds.addButton} onClick={(e) => this.handleClosingFunction(e.target.value, e.target.id)}>Add items</button>
-        <button>Remove items</button>
+            <button className="btn-brand" onClick={() => this.handleSearchSetStateByBrandAndCar()} >Search item</button><br></br> 
+          </div>
+          <div className="warehouse-btns"> 
+            <button>List of parts</button>
+            <button id={this.state.buttonIds.addButton} onClick={(e) => this.handleClosingFunction(e.target.value, e.target.id)}>Add items</button>
+            <button id={this.state.buttonIds.removeButton} onClick={(e) => this.handleClosingFunction(e.target.value, e.target.id)}>Remove items</button>
+          </div>
+          <h3>{this.state.resultMessages.found}</h3>  
+          <h3>{this.state.resultMessages.didNotFound}</h3>
+          
+             
      </div>
 
      {this.state.searchResult ? 
@@ -395,6 +443,14 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
       handleClosingFunction={this.handleClosingFunction}
       buttonIds={this.state.buttonIds} 
      />) : null}
+    
+    {this.state.removingItem ?
+    (<RemoveItems
+    buttonIds={this.state.buttonIds}
+    handleClosingFunction={this.handleClosingFunction} 
+    />) : null}
+
+    <CountedParts />
   
   </div>
 

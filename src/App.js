@@ -110,6 +110,19 @@ handleInputPass = (passValue) => {
     }))
     }
 
+  handleLogOut = (value) => {
+    this.setState(prevState => ({
+      credentials: {...prevState.credentials,  username: "", password: "", department: null}
+    }));
+
+    this.setState(prevState => ({
+      successfullyLogin: {...prevState.successfullyLogin,  condition: false}
+    }));
+
+    console.log('logoutFunc', value);
+
+  }
+
   render() { 
     
     let isLogin = this.state.successfullyLogin.condition;
@@ -131,13 +144,18 @@ handleInputPass = (passValue) => {
           errorTryLogin={this.state.errorTryLogin}
           />) : null} */}
 
-          {/* {isLogin && department == "warehouse" ? <Warehouse /> {: null} */}
+
+          {/* {isLogin && department == "warehouse" ? */}
           <Warehouse 
           brandSelector={this.passingBrandSelector}
           selectorValues={this.state.selectorValues}
+          logout={this.handleLogOut}
           />
+           {/* : null} */}
 
-          {/* {isLogin && department == "sales" ? <Sales /> : null} */}
+          {/* {isLogin && department == "sales" ? 
+          <Sales />
+           : null} */}
       
       </div>
       );

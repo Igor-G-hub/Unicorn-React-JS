@@ -4,11 +4,11 @@
     "dateOfProd": "2020-01",
     "brand": "Audi",
     "car": ["Q4", "Q5", "Q7"],
-    "basePrice": "50",
+    "basePrice": "",
     "action": {
-            "startDate":"2020-02-01",
-            "expireDate":"2020-04-01",
-            "discountPercent": "10"
+            "startDate":"",
+            "expireDate":"",
+            "discountPercent": ""
             }
     },
     {
@@ -18,8 +18,8 @@
         "car": ["C5"],
         "basePrice": "30",
         "action": {
-                "startDate":"2020-02-01",
-                "expireDate":"2020-04-01",
+                "startDate":"2021-02-01",
+                "expireDate":"2021-04-01",
                 "discountPercent": "10"
                 }
     },   
@@ -30,8 +30,8 @@
         "car": ["C5"],
         "basePrice": "30",
         "action": {
-                "startDate":"2020-02-01",
-                "expireDate":"2020-04-01",
+                "startDate":"2021-02-01",
+                "expireDate":"2021-05-01",
                 "discountPercent": "10"
                 }
         }, 
@@ -42,8 +42,8 @@
         "car": ["Q3", "Q4"],
         "basePrice": "60",
         "action": {
-                "startDate":"2020-02-01",
-                "expireDate":"2020-04-01",
+                "startDate":"2021-02-01",
+                "expireDate":"2021-04-01",
                 "discountPercent": "10"
                 }
         },
@@ -54,8 +54,8 @@
             "car": ["Q4", "Q5", "Q7"],
             "basePrice": "50",
             "action": {
-                    "startDate":"2020-02-01",
-                    "expireDate":"2020-04-01",
+                    "startDate":"2021-02-01",
+                    "expireDate":"2021-04-01",
                     "discountPercent": "10"
                     }
         },
@@ -67,8 +67,8 @@
             "car": ["Serie 7", "Serie 5", "Serie 3"],
             "basePrice": "40",
             "action": {
-                    "startDate":"2020-02-01",
-                    "expireDate":"2020-04-01",
+                    "startDate":"2021-02-01",
+                    "expireDate":"2021-06-01",
                     "discountPercent": "10"
                     }
             },
@@ -79,8 +79,8 @@
                 "car": ["Serie 3", "Serie 5"],
                 "basePrice": "78",
                 "action": {
-                        "startDate":"2020-02-01",
-                        "expireDate":"2020-04-01",
+                        "startDate":"2021-02-01",
+                        "expireDate":"2021-07-01",
                         "discountPercent": "10"
                         }
                 },
@@ -91,8 +91,8 @@
                     "car": ["Astra", "Insignia"],
                     "basePrice": "30",
                     "action": {
-                            "startDate":"2020-02-01",
-                            "expireDate":"2020-04-01",
+                            "startDate":"2021-02-01",
+                            "expireDate":"2021-04-01",
                             "discountPercent": "10"
                             }
                     },
@@ -103,8 +103,8 @@
                         "car": ["Insignia"],
                         "basePrice": "30",
                         "action": {
-                                "startDate":"2020-02-01",
-                                "expireDate":"2020-04-01",
+                                "startDate":"2021-02-01",
+                                "expireDate":"2021-04-01",
                                 "discountPercent": "10"
                                 }
                         },
@@ -115,8 +115,8 @@
     "car": ["Golf", "Passat", "Eos"],
     "basePrice": "50",
     "action": {
-            "startDate":"2020-02-01",
-            "expireDate":"2020-04-01",
+            "startDate":"2021-02-01",
+            "expireDate":"2021-04-01",
             "discountPercent": "10"
             }
     },
@@ -125,10 +125,10 @@
         "dateOfProd": "2020-11",
         "brand": "Dacia",
         "car": ["Logan", "Sandero", "Duster"],
-        "basePrice": "30",
+        "basePrice": "",
         "action": {
-                "startDate":"2020-02-01",
-                "expireDate":"2020-04-01",
+                "startDate":"",
+                "expireDate":"",
                 "discountPercent": "10"
                 }
     },   
@@ -137,23 +137,23 @@
         "dateOfProd": "2020-12",
         "brand": "Fiat",
         "car": ["Punto", "500", "Tipo"],
-        "basePrice": "30",
+        "basePrice": "",
         "action": {
-                "startDate":"2020-02-01",
-                "expireDate":"2020-04-01",
-                "discountPercent": "10"
+                "startDate":"",
+                "expireDate":"",
+                "discountPercent": ""
                 }
         }, 
     {
         "serialNumber": "1013",
         "dateOfProd": "2021-01",
         "brand": "Hyundai",
-        "car": ["santa Fe", "i30", "i40", "Tucson"],
-        "basePrice": "60",
+        "car": ["Santa Fe", "i30", "i40", "Tucson"],
+        "basePrice": "",
         "action": {
-                "startDate":"2020-02-01",
-                "expireDate":"2020-04-01",
-                "discountPercent": "10"
+                "startDate":"2021-02-01",
+                "expireDate":"2021-04-01",
+                "discountPercent": ""
                 }
         },
         {
@@ -163,8 +163,8 @@
             "car": ["Q4", "Q5", "Q7"],
             "basePrice": "50",
             "action": {
-                    "startDate":"2020-02-01",
-                    "expireDate":"2020-04-01",
+                    "startDate":"2021-02-01",
+                    "expireDate":"2021-04-01",
                     "discountPercent": "10"
                     }
         },
@@ -176,8 +176,8 @@
             "car": ["Q5"],
             "basePrice": "40",
             "action": {
-                    "startDate":"2020-02-01",
-                    "expireDate":"2020-04-01",
+                    "startDate":"2021-02-01",
+                    "expireDate":"2021-04-01",
                     "discountPercent": "10"
                     }
             },
@@ -188,8 +188,8 @@
                 "car": ["Serie 3", "Serie 5"],
                 "basePrice": "78",
                 "action": {
-                        "startDate":"2020-02-01",
-                        "expireDate":"2020-04-01",
+                        "startDate":"2021-02-01",
+                        "expireDate":"2021-04-01",
                         "discountPercent": "10"
                         }
                 },
@@ -200,8 +200,8 @@
                     "car": ["C3", "C4"],
                     "basePrice": "30",
                     "action": {
-                            "startDate":"2020-02-01",
-                            "expireDate":"2020-04-01",
+                            "startDate":"2021-02-01",
+                            "expireDate":"2021-04-01",
                             "discountPercent": "10"
                             }
                     },
@@ -212,8 +212,8 @@
                         "car": ["C5"],
                         "basePrice": "30",
                         "action": {
-                                "startDate":"2020-02-01",
-                                "expireDate":"2020-04-01",
+                                "startDate":"2021-02-01",
+                                "expireDate":"2021-04-01",
                                 "discountPercent": "10"
                                 }
                         }, 
@@ -224,8 +224,8 @@
                                 "car": ["Q4", "Q5", "Q7"],
                                 "basePrice": "50",
                                 "action": {
-                                        "startDate":"2020-02-01",
-                                        "expireDate":"2020-04-01",
+                                        "startDate":"2021-02-01",
+                                        "expireDate":"2021-04-01",
                                         "discountPercent": "10"
                                         }
                                 },
@@ -236,8 +236,8 @@
                                     "car": ["C5"],
                                     "basePrice": "30",
                                     "action": {
-                                            "startDate":"2020-02-01",
-                                            "expireDate":"2020-04-01",
+                                            "startDate":"2021-02-01",
+                                            "expireDate":"2021-04-01",
                                             "discountPercent": "10"
                                             }
                                 },   
@@ -248,8 +248,8 @@
                                     "car": ["C5"],
                                     "basePrice": "30",
                                     "action": {
-                                            "startDate":"2020-02-01",
-                                            "expireDate":"2020-04-01",
+                                            "startDate":"2021-02-01",
+                                            "expireDate":"2021-04-01",
                                             "discountPercent": "10"
                                             }
                                     }, 
@@ -260,8 +260,8 @@
                                     "car": ["Q3", "Q4"],
                                     "basePrice": "60",
                                     "action": {
-                                            "startDate":"2020-02-01",
-                                            "expireDate":"2020-04-01",
+                                            "startDate":"2021-02-01",
+                                            "expireDate":"2021-04-01",
                                             "discountPercent": "10"
                                             }
                                     },
@@ -272,8 +272,8 @@
                                         "car": ["Q4", "Q5", "Q7"],
                                         "basePrice": "50",
                                         "action": {
-                                                "startDate":"2020-02-01",
-                                                "expireDate":"2020-04-01",
+                                                "startDate":"2021-02-01",
+                                                "expireDate":"2021-04-01",
                                                 "discountPercent": "10"
                                                 }
                                     },
@@ -285,8 +285,8 @@
                                         "car": ["Q5"],
                                         "basePrice": "40",
                                         "action": {
-                                                "startDate":"2020-02-01",
-                                                "expireDate":"2020-04-01",
+                                                "startDate":"2021-02-01",
+                                                "expireDate":"2021-04-01",
                                                 "discountPercent": "10"
                                                 }
                                         },
@@ -297,8 +297,8 @@
                                             "car": ["Serie 3", "Serie 5"],
                                             "basePrice": "78",
                                             "action": {
-                                                    "startDate":"2020-02-01",
-                                                    "expireDate":"2020-04-01",
+                                                    "startDate":"2021-02-01",
+                                                    "expireDate":"2021-04-01",
                                                     "discountPercent": "10"
                                                     }
                                             },
@@ -309,8 +309,8 @@
                                                 "car": ["C3", "C4"],
                                                 "basePrice": "30",
                                                 "action": {
-                                                        "startDate":"2020-02-01",
-                                                        "expireDate":"2020-04-01",
+                                                        "startDate":"2021-02-01",
+                                                        "expireDate":"2021-04-01",
                                                         "discountPercent": "10"
                                                         }
                                                 },
@@ -321,20 +321,20 @@
                                                     "car": ["C5"],
                                                     "basePrice": "30",
                                                     "action": {
-                                                            "startDate":"2020-02-01",
-                                                            "expireDate":"2020-04-01",
+                                                            "startDate":"2021-02-01",
+                                                            "expireDate":"2021-04-01",
                                                             "discountPercent": "10"
                                                             }
                                                     },
                                                     {
-                                                        "serialNumber": "1027",
+                                                        "serialNumber": "1028",
                                                         "dateOfProd": "2020-01",
                                                         "brand": "Audi",
                                                         "car": ["Q3", "Q5", "Q7"],
                                                         "basePrice": "50",
                                                         "action": {
-                                                                "startDate":"2020-02-01",
-                                                                "expireDate":"2020-04-01",
+                                                                "startDate":"2021-02-01",
+                                                                "expireDate":"2021-04-01",
                                                                 "discountPercent": "10"
                                                                 }
                                                     }        

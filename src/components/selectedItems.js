@@ -9,7 +9,7 @@ class SelectedItems extends Component {
         
         return (
             <>
-            <div className="json-rendering">
+            <div className="json-padding">
             <p style={{marginBottom: 10}}>{'['}</p>
 
                 {this.props.searchResult}
