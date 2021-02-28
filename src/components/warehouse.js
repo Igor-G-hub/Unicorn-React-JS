@@ -170,7 +170,6 @@ class Warehouse extends Component {
     handleSearchSetStateSerialNum = () => {
       this.handleSearchSerialNum();
       const search = this.handleSearchSerialNum();
-      console.log('provjera', Boolean(search));
       if (search) {
       this.setState({searchResult: search});
       this.setState(prevState => ({

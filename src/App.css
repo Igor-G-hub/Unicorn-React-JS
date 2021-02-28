@@ -417,11 +417,19 @@ body {
     padding-left: 15px;
 }
 
+.sales-main .first-label {
+    margin-bottom: 0;
+}
+
 .sales-main input {
     padding: 8px 16px;
     border-radius: 20px;
     margin: 0 15px;
     border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.sales-main .first-input {
+    margin-top: 0;
 }
 
 .sales-main button {
@@ -435,6 +443,25 @@ body {
     margin: 10px;
 }
 
+.sales-main h4 {
+    font-size: 0.8rem;
+    margin-left: 15px;
+}
+
+.sales-main h5 {
+    font-size: 0.8rem;
+    color: rgb(238, 70, 70);
+    margin-left: 30px;
+    width: 30%;
+}
+
+.sales-main .base-price-message {
+    font-size: 0.8rem;
+    color: rgb(238, 70, 70);
+    margin-left: 30px;
+    width: 50%;
+}
+
 .search-p {
     width: 30%;
     margin: 10px 0;
@@ -446,4 +473,35 @@ body {
     background-color: rgb(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
+}
+
+.sales-base-price label {
+}
+
+.base-price {
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+    margin-top: 10px;
+}
+
+.base-price-message {
+    font-size: 0.8rem;
+    color: rgb(238, 70, 70);
+    margin-left: 0px;
+}
+
+.base-price input {
+    width: 20%;
+}
+
+.base-price-input {
+}
+
+.base-price-buttons {
 }

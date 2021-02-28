@@ -146,16 +146,16 @@ handleInputPass = (passValue) => {
 
 
           {/* {isLogin && department == "warehouse" ? */}
-          <Warehouse 
+          {/* <Warehouse 
           brandSelector={this.passingBrandSelector}
           selectorValues={this.state.selectorValues}
           logout={this.handleLogOut}
-          />
+          /> */}
            {/* : null} */}
 
-          {/* {isLogin && department == "sales" ? 
+          {/* {isLogin && department == "sales" ?  */}
           <Sales />
-           : null} */}
+           {/* : null */}
       
       </div>
       );
