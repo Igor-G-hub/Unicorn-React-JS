@@ -452,7 +452,11 @@ body {
     font-size: 0.8rem;
     color: rgb(238, 70, 70);
     margin-left: 30px;
-    width: 30%;
+    width: 40%;
+}
+
+.sales-ser-num-h5 {
+    padding-left: 50px;
 }
 
 .sales-main .base-price-message {
@@ -504,4 +508,30 @@ body {
 }
 
 .base-price-buttons {
+}
+
+.action {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 30px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.action p {
+    padding: 0 0 20px 15px;
+}
+
+.action input {
+    margin: 10px 10px;
+    width: 20%;
+}
+
+.action select {
+    padding: 8px 8px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.action-buttons {
+    width: 80%;
 }

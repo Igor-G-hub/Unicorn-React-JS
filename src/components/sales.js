@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import dataBase from './dataBase.json';
 import SelectedItem from './sales-selected.js';
 import BasePrice from './sales-base-price';
+import AddAction from './sales-action.js';
 
 
 class Sales extends Component {
@@ -19,10 +20,11 @@ class Sales extends Component {
         resultMessages: {
                          didNotFound: "",
                          Found: "",
-                         basePriceMessage: ""
+                         serialNumEnterMessage: ""
                         },
         
-        basePrice: null,                
+        basePrice: null, 
+        action: null
      }
 
     handleInput = (value) => {
@@ -68,7 +70,7 @@ class Sales extends Component {
                  
     handleSetSearchState = () => {
         this.setState(prevState => ({
-            resultMessages: {...prevState.resultMessages, didNotFound: "", Found: "", basePriceMessage: ""}
+            resultMessages: {...prevState.resultMessages, didNotFound: "", Found: "", serialNumEnterMessage: ""}
         }));
         this.setState({basePrice: null});
 
@@ -92,17 +94,38 @@ class Sales extends Component {
     handleBasePrice = () => {
         if (this.state.searchResult) {
         this.setState({basePrice: true});
+        this.setState({action: null});
+
         this.setState(prevState => ({
-            resultMessages: {...prevState.resultMessages, basePriceMessage: ""}
+            resultMessages: {...prevState.resultMessages, serialNumEnterMessage: ""}
          }))
         } else {
             this.setState(prevState => ({
-                resultMessages: {...prevState.resultMessages, basePriceMessage: "Please enter serial number..."}
+                resultMessages: {...prevState.resultMessages, serialNumEnterMessage: "Please enter serial number..."}
              }))
         }
     }
 
+    handleAction = () => {
+        if (this.state.searchResult) {
+            this.setState({action: true});
+            this.setState({basePrice: null});
+            
+            this.setState(prevState => ({
+                resultMessages: {...prevState.resultMessages, serialNumEnterMessage: ""}
+             }))
+            } else {
+                this.setState(prevState => ({
+                    resultMessages: {...prevState.resultMessages, serialNumEnterMessage: "Please enter serial number..."}
+                 }))
+            }
 
+    }
+
+    handleClosingFunc = () => {
+        this.setState({basePrice: null});
+        this.setState({action: null});
+    }
 
 
 
@@ -113,35 +136,43 @@ class Sales extends Component {
     render() { 
         return (  
             <div className="sales-main">
+                <button className="logout-button">Logout</button>
                 <h1>Sales</h1><br></br>
                 <label className="first-label">Enter serial number:</label><br></br>
-                <h5>{this.state.resultMessages.didNotFound}</h5>
+                <h5 className="sales-ser-num-h5">{this.state.resultMessages.didNotFound}</h5>
                 <div>
                     <input className="first-input"
                     onChange={(e) => this.handleInput(e.target.value)}
                     placeholder="enter serial number..."></input>
                     <button onClick={() => this.handleSetSearchState()} >Confirm</button>
-                    </div>
-                    {this.state.searchResult ?  <SelectedItem
-                    searchResult={this.state.searchResult}
-                    search={this.state.search} 
-                    /> : null}
-                    {this.state.basePrice ?
-                    <BasePrice
-                    search={this.state.search} 
-                    searchResult={this.state.searchResult}
-                    /> : null}
+                </div>
+                        {this.state.searchResult ?  <SelectedItem
+                        searchResult={this.state.searchResult}
+                        search={this.state.search} 
+                        /> : null}
+                        {this.state.basePrice ? 
+                        <BasePrice
+                        search={this.state.search} 
+                        searchResult={this.state.searchResult}
+                        handleClosingFunc={this.handleClosingFunc}
+                        /> : null}
+                        {this.state.action ? 
+                        <AddAction
+                        search={this.state.search}
+                        handleClosingFunc={this.handleClosingFunc}
+                        /> : null}
                     
                
                     <div>
-                        <h5 className="base-price-message">{this.state.resultMessages.basePriceMessage}</h5>
+                        <h5 className="base-price-message">{this.state.resultMessages.serialNumEnterMessage}</h5>
                         <button onClick={() => this.handleBasePrice()}>Add/remove base price</button>
-                        <button>Add/remove action</button>
+                        <button onClick={() => this.handleAction()}>Add/remove action</button>
                     </div>
                     <div>
                         <button>All articles JSON</button>
-                    <button>List of all articles</button> 
-                </div>  
+                        <button>All actions JSON</button> 
+                        <button>Table of all articles</button> 
+                   </div>  
 
 
 
