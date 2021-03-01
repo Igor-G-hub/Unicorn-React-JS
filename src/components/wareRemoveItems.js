@@ -59,7 +59,8 @@ class RemoveItems extends Component {
 
         arraySerNum.splice(arraySerNum.indexOf(serialNumber), 1);
 
-        console.log(dataBase);
+        console.log('arraySer', arraySerNum);
+        console.log('indexOF', arraySerNum.indexOf(serialNumber));
       } 
       
     render() {

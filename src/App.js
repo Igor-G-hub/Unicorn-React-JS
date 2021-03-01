@@ -119,7 +119,6 @@ handleInputPass = (passValue) => {
       successfullyLogin: {...prevState.successfullyLogin,  condition: false}
     }));
 
-    console.log('logoutFunc', value);
 
   }
 
@@ -131,7 +130,7 @@ handleInputPass = (passValue) => {
     return (
       <div className="background-set">
 
-          {/* {!isLogin ? (<Home 
+          {!isLogin ? (<Home 
           handleSubmit={this.handleSubmit} 
           handleInputName={this.handleInputName}
           handleInputPass={this.handleInputPass}
@@ -142,20 +141,20 @@ handleInputPass = (passValue) => {
           errorMessageName={this.state.errorMessageName}
           errorMessagePass={this.state.errorMessagePass}
           errorTryLogin={this.state.errorTryLogin}
-          />) : null} */}
+          />) : null}
 
 
-          {/* {isLogin && department == "warehouse" ? */}
-          {/* <Warehouse 
+          {isLogin && department == "warehouse" ?
+          <Warehouse 
           brandSelector={this.passingBrandSelector}
           selectorValues={this.state.selectorValues}
           logout={this.handleLogOut}
-          /> */}
-           {/* : null} */}
+          />  : null}
 
-          {/* {isLogin && department == "sales" ?  */}
-          <Sales />
-           {/* : null */}
+          {isLogin && department == "sales" ? 
+          <Sales
+          logout={this.handleLogOut}
+          /> : null}
       
       </div>
       );

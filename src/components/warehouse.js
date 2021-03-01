@@ -30,6 +30,7 @@ class Warehouse extends Component {
           searchResult: null,
           addingItem: null,
           removingItem: null,
+          counterJSON: null,
           buttonIds: {
                   addButton: "addButton",
                   removeButton: "removeButton",
@@ -168,10 +169,19 @@ class Warehouse extends Component {
 
 
     handleSearchSetStateSerialNum = () => {
+      this.setState({addingItem: null});
+      this.setState({removingItem: null});
+      this.setState({counterJSON: null});
+      this.setState(prevState => ({
+        resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}
+      }))
+
       this.handleSearchSerialNum();
       const search = this.handleSearchSerialNum();
       if (search) {
       this.setState({searchResult: search});
+    
+
       this.setState(prevState => ({
         resultMessages: {...prevState.resultMessages, found: "Results: found " + search.length + " items", didNotFound: ""}
       }));
@@ -231,10 +241,18 @@ class Warehouse extends Component {
   }
 
   handleSearchSetStateDateofProd = () => {
+    this.setState({addingItem: null});
+    this.setState({removingItem: null});
+    this.setState({counterJSON: null});
     this.handleSearchDateofProd();
+    this.setState(prevState => ({
+      resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}
+    }))
     const search = this.handleSearchDateofProd();
     if (search) {
     this.setState({searchResult: search});
+ 
+
     this.setState(prevState => ({
       resultMessages: {...prevState.resultMessages, found: "Results: found " + search.length + " items", didNotFound: ""}
     }));
@@ -298,10 +316,18 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
    }
 
   handleSearchSetStateByBrandAndCar = () => {
+    this.setState({addingItem: null});
+    this.setState({removingItem: null});
+    this.setState({counterJSON: null});
+    this.setState(prevState => ({
+      resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}
+    }))
     this.handleSearchBrandAndCar();
     const search = this.handleSearchBrandAndCar();
     if (search) {
     this.setState({searchResult: search});
+ 
+
     this.setState(prevState => ({
       resultMessages: {...prevState.resultMessages, found: "Results: found " + search.length + " items", didNotFound: ""}
     }));
@@ -313,35 +339,97 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
   } 
 
   handleClosingFunction = (value, eventId) => {
-    const buttonIds = this.state.buttonIds;
+        const buttonIds = this.state.buttonIds;
 
-    if (eventId == buttonIds.addButton) {
-      this.setState({searchResult: null}); 
-      this.setState({removingItem: null,});
-      this.setState({addingItem: true});
-      this.setState(prevState => ({
-         resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}  
-      }));
-    }
+        if (eventId == buttonIds.addButton) {
+          this.setState({searchResult: null}); 
+          this.setState({removingItem: null,});
+          this.setState({addingItem: true});
+          this.setState({counterJSON: null});
+          this.setState(prevState => ({
+            resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}  
+          }));
+        }
 
-    if (eventId == buttonIds.closeAddButton) {
+        if (eventId == buttonIds.closeAddButton) {
+          this.setState({addingItem: null});
+        }
+
+        if (eventId == buttonIds.removeButton) {
+          this.setState({searchResult: null}); 
+          this.setState({addingItem: null});
+          this.setState({removingItem: true});
+          this.setState({counterJSON: null});
+          this.setState(prevState => ({
+            resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}  
+        }));
+        }
+
+        if (eventId == buttonIds.closeRemoveButton) {
+          this.setState({removingItem: null});
+        }
+      }
+
+    handleCountedParts = () => {
+
+      let arrayCount =[];
+      for (let i = 0; i < dataBase.length; i++) {
+          for (let j = 0; j < dataBase[i].car.length;  j++) {
+              arrayCount.push(dataBase[i].car[j]); 
+          }
+      }
+
+      arrayCount.sort();
+
+      const partCounts = arrayCount.reduce(function(accum, cur) {
+          accum[cur] = (accum[cur] || 0) + 1;
+          return accum;
+        }, {});
+
+      let reduceDupliArrayCount = arrayCount.reduce((accum, currVal) => {
+          if (accum.indexOf(currVal) == -1) {
+              accum.push(currVal);
+          }
+          return accum;
+      }, [])
+
+      let arrayCars = reduceDupliArrayCount;
+      
+      let arrayBrands = arrayCars.map(car => {
+          for (let i = 0; i < dataBase.length; i++) {
+
+              if (dataBase[i].car.indexOf(car) > -1) {
+                 return dataBase[i].brand;
+              }
+          }
+      })
+
+      const objCarBrand = {};
+      arrayCars.forEach((key, i) => objCarBrand[key] = arrayBrands[i]);
+
+      let count = [];
+      for (let props in partCounts) {
+          count.push(partCounts[props]);
+      }
+     
+      let counterJSON = arrayCars.map((car, index) => {
+
+          return (
+
+          <div key={index}>
+              <i style={{paddingLeft: 10}}>{"{"}</i>
+              <p><i>{'"brand_and_automobile"'}</i><i>{JSON.stringify(arrayBrands[index] + " " + car)}</i>{','}</p>
+              <p><i>{'"count": '}</i><i>{count[index]}</i>{','}</p>
+              <p style={{paddingLeft: 10}}>{'},'}</p>
+          </div>
+          )
+      })
+      this.setState({counterJSON: counterJSON});
+      this.setState({searchResult: null});
       this.setState({addingItem: null});
-    }
-
-    if (eventId == buttonIds.removeButton) {
-      this.setState({searchResult: null}); 
-      this.setState({addingItem: null});
-      this.setState({removingItem: true});
-      this.setState(prevState => ({
-        resultMessages: {...prevState.resultMessages, didNotFound: "", found: ""}  
-     }));
-    }
-
-    if (eventId == buttonIds.closeRemoveButton) {
       this.setState({removingItem: null});
-    }
-  }
 
+  }
 
     render() { 
         return (
@@ -421,7 +509,7 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
             <button className="btn-brand" onClick={() => this.handleSearchSetStateByBrandAndCar()} >Search item</button><br></br> 
           </div>
           <div className="warehouse-btns"> 
-            <button>List of parts</button>
+            <button onClick={() => this.handleCountedParts()}>List of parts</button>
             <button id={this.state.buttonIds.addButton} onClick={(e) => this.handleClosingFunction(e.target.value, e.target.id)}>Add items</button>
             <button id={this.state.buttonIds.removeButton} onClick={(e) => this.handleClosingFunction(e.target.value, e.target.id)}>Remove items</button>
           </div>
@@ -449,7 +537,10 @@ if (((item.brand == brand) && (item.car.indexOf(car) > -1)) || ((item.brand == b
     handleClosingFunction={this.handleClosingFunction} 
     />) : null}
 
-    <CountedParts />
+    {this.state.counterJSON ?
+    <CountedParts
+    counterJSON={this.state.counterJSON} 
+    /> : null}
   
   </div>
 

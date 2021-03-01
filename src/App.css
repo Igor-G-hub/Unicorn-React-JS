@@ -280,7 +280,7 @@ body {
 } */
 
 .json-padding {
-    width: 30%;
+    width: 35%;
     background-color: rgb(0, 0, 0, 0.7);
     padding: 30px;
     border-radius: 10px;
@@ -407,7 +407,7 @@ body {
 .sales-main h1 {
     letter-spacing: 0.5rem;
     font-size: 2.5rem;
-    padding: 50px 30px 50px 30px;
+    padding: 30px 30px 30px 30px;
 }
 
 .sales-main label {
@@ -417,8 +417,10 @@ body {
     padding-left: 15px;
 }
 
-.sales-main .first-label {
-    margin-bottom: 0;
+#first-label {
+    align-self: center;
+    align-items: center;
+    padding-left: 20px;
 }
 
 .sales-main input {
@@ -479,6 +481,20 @@ body {
     border-radius: 10px;
 }
 
+.json-counted {
+    width: 40%;
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.json-actions {
+    width: 40%;
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
 .sales-base-price label {
 }
 
@@ -534,4 +550,49 @@ body {
 
 .action-buttons {
     width: 80%;
+}
+
+.table-container {
+    /* background-color: rgb(0, 0, 0, 0.5); */
+    border-radius: 10px;
+    padding: 30px 30px;
+}
+
+#table {
+    border-collapse: collapse;
+    width: 100%;
+    padding: 20px;
+}
+
+#table td,
+#table th {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#table tr:nth-child(even) {
+    /* background-color: rgb(82, 80, 80); */
+    color: black;
+}
+
+#table tr:nth-child(even):hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(0, 0, 0, 1);
+    color: white;
+}
+
+#table td {
+    background-color: rgb(243, 240, 240);
+    color: black;
+}
+
+.table-container h3 {
+    margin-left: 10px;
 }

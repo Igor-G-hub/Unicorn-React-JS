@@ -174,7 +174,7 @@ class AddItems extends Component {
                         >
                         </input><br></br>
                         <label>Car:</label><br></br>
-                        <input className id={this.state.ids.idCar}  type="text" 
+                        <input id={this.state.ids.idCar}  type="text" 
                         required placeholder="car..." value={this.state.addInputs.car}
                         onChange={(e) => this.handleAddInputs(e.target.value, e.target.id)}
                         >

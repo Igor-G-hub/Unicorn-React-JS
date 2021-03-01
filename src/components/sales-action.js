@@ -106,9 +106,8 @@ class AddAction extends Component {
                break;
             }
         }
-        console.log('prije', dataBase[index]);
 
-        if (( dataBase[index].action.startDate !== "") && ( dataBase[index].action.expireDate !== 0) 
+        if (( dataBase[index].action.startDate !== "") && ( dataBase[index].action.expireDate !== "") 
             && ( dataBase[index].action.discountPercent !== "")) {
 
                 dataBase[index].action.startDate = "";
@@ -117,11 +116,9 @@ class AddAction extends Component {
 
                this.setState({messageRemoveAction: "Previous action has been removed"});
         } else {
-            this.setState({messageRemoveDidnotExist: "This product did not have an action"})
+            this.setState({messageRemoveDidnotExist: "This product doesn't have any action"})
         }   
         
-        console.log('poslije', dataBase[index]);
-
     }
 
 
@@ -132,6 +129,7 @@ class AddAction extends Component {
             <p>Add/remove action for part number: {this.props.search}</p>
             <h4>{this.state.messageAddedAction}</h4>
             <h4>{this.state.messageRemoveAction}</h4>
+            <h4>{this.state.messageRemoveDidnotExist}</h4>
             <h5>{this.state.messageFillInput}</h5>
             <label>Starting date:</label>
             <select id={this.state.ids.idStartingDateDay} 
