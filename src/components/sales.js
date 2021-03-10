@@ -186,7 +186,8 @@ class Sales extends Component {
     handleAllActionsJSON = () => {
 
         let renderArray = dataBase.map((item, index) => {
-            if ((item.action.startDate !== "") && (item.action.expireDate !== "") && (item.action.discountPercent !== "")) {
+            if ((item.action.startDate !== "") && (item.action.expireDate !== "") &&
+             (item.action.discountPercent !== "") && (item.basePrice !== "")) {
               return (
                     <div className="json-article" key={index}>
                         <i style={{paddingLeft: 10}}>{"{"}</i>

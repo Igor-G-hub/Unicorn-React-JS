@@ -122,7 +122,6 @@ class AddItems extends Component {
     }
      
     render() { 
-        console.log(dataBase);
         return ( 
             
             <div className="add-items">
