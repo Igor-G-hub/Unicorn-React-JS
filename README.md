@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+Aplikacija se sastoji od dva glavna modula – Warehouse-a i Sales-a. Prije ulaza u oba modula potrebno se ulogirati sa zadanim usernameom i passwordom iz zadatka (username: warehouse password: skladište za modul Warehouse i username: sales password: prodaja za modul Sales). Navedeni podaci su spremljeni u JSON file-u “Credentials” te aplikacija uspoređuje unesene podatke u modulu “Login” s podacima iz spomenutog JSON-a te ovisno o njima vraća rezultat. Postavljenje su kontrole te odgovarajuće error poruke ukoliko su uneseni neodgovarajući podaci. Uspješnim logiranjem program preusmjerava prema modulu warehouse ili Salesa, ovisno o izabranom.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+U aplikaciju je također  uključen i JSON file database koji “glumi” bazu podataka te je sadržan od automobilskih dijelova zadanih u zadatku. Dijelovi se sastoje od serijskog broja, datuma proizvodnje, branda, tipa automobila, bazne cijene te akcije u koju su ukršteni datum početka akcije, datum završetka akcije te postotno umanjenje proizvoda. 
 
-## Available Scripts
+Zamišljeno je da se unos i brisanje dijelova provodi kroz modul Warehouse a unos i izmjena akcija i artikala kroz modul Sales. Dio je definiran kao artikl ukoliko mu je zadana bazna cijena. Na nekoliko dijelova sam namjerno izostavio određene  podatke kako proizvod ne bi ulazio u zadane kriterije, za potrebe testiranja postavljenih fukcionalnosti.
 
-In the project directory, you can run:
 
-### `npm start`
+Modul Warehouse se sastoji od sljedećega:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Postavljene su 3 pretrage: prema serijskom broju, datumu proizvodnje i brandu i tipu auta. Pretragu nije moguće kombinirati, onemogućeni su paraleni unosi te su razdvojene zasebnim gumbima za search. Za pretragu prema brandu i tipu postavljeni su padajući izbornici sa dinamičkim mapiranim opcijama iz JSON baze podataka. Dakle, moguće je izabrati samo brand i tip automobila koji se već nalazi u bazi podataka te ovisno o promjenama u bazi mjenjat će se i padajući izbornici. Također su postavljene I dogovarajuće poruke ovisno o tome da li je pretraga uspješna ili ne. Svi responseovi ovog modula su ispisani u JSON formatu.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+List of parts – klikom na navedeni gumb ispisat će se traženi JSON file u formatu brand_and_automobile: “ “, count: “ ”.  Pregled prikazuje sve brandove I tipove automobila iz baze te ukupan broj dijelova koji im odgovaraju.
 
-### `npm test`
+Napomena: Kako je u zadatku zadano da svaki dio može odgovarati nekoliko tipova automobila ukupna suma counta je veća od stvarne jer jedan dio može koristiti više tipova automobila. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Add items – pritiskom na gumb otvara se modul za unos dijela. Postavljene su kontrole s odgovarajućim porukama na način da je potrebno unijeti sva tražena polja te nije moguće dodati novi dio ukoliko se serijski broj slaže s već postojećim iz baze. Uspješnim unosom novi dio je dodan u bazi podataka do slijedećeg refreasha.
 
-### `npm run build`
+Remove items – pritiskom na gumb otvara se modul za brisanje dijela iz baze podataka. Traži se unos serijskog broja proizvoda te nije moguće unijeti broj koji se ne nalazi u bazi podataka. Uspješnim unosom dio sa zadanim serijskim brojem se broše iz baze podataka do slijedećeg refreasha.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Logout – pritiskom na gumb aplikacija nas vraća na početni zaslon
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Modul Sales sastoji od sljedećega:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Unos serijskog broja – traži se unos serijskog broja kako bi se na određenom dijelu izvršavale daljnje radnje vezano uz akcije i baznu cijenu. Postavljene su kontrole s odgovarajućim porukama te je potrebno unijeti serijski broj koji se nalazi u bazi podataka.
 
-### `npm run eject`
+Add/remove base price – klikom na gumb otvara se modul za unos bazne cijene za prethodno odabrani dio. Klikom na gumb Add dodaje se ili mijenja postojeća cijena a pritiskom na gumb Remove postojeća bazna cijena se briše. Postavljene su odgovarajuće kontrolne poruke. Modul ne prihvaća unos praznog polja za dodavanje te će ispisati obavijesnu poruku ukoliko se kliknulo Remove a proizvod nije imao prethodno unesenu baznu cijenu (nekoliko dijelova iz baze za potrebe testiranja nema unesene bazne cijene).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Add/remove action – analogno prethodno navedenom modulu, modul za unos akcija također radi na način da se prethodno mora unijeti serijski broj proizvoda. Također su dodane kontrole te obavijesne poruke ukoliko nisu popunjena sva polja prije pritiska na gumb Add ili ukoliko se pokušava ukloniti akcija na proizvod koji ju nije ni imao zadanu.
+            
+All articles JSON – pretraga ispisuje JSON podatke o svim zadanim artiklima koja ne uključuje nekoliko dijelova kojima nije zadana bazna cijena (za potrebe testiranja) jer time nisu definirani kao artikl. Ispisani su podaci o serijskom broju, datumu proizvodnje te konačnoj cijeni proizvoda. Konačna cijena je bazna cijena umanjena za akcdijski popust osim za nekoliko artikala koji nemaju unesen popust (za potrebe testiranja) te im je konačna jednaka baznoj cijeni.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All actions JSON – pretraga ispisuje JSON podatke o svim zadanim akcijama te ne uključuje proizvode koji nemaju baznu cijenu, datum početka i kraja akcije te akcijski popust. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Table of all articles – pritiskom na gumb ispisuje se tablica sa svim artiklima iz baze tj. dijelovima koji imaju definiranu baznu cijenu.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Logout – pritiskom na gumb aplikacija nas vraća na početni zaslon.
